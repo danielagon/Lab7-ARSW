@@ -5,8 +5,6 @@
  */
 package edu.eci.arsw;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +26,8 @@ public class ConsultAPIController {
     private HttpConnection APIconnection;
   
     @RequestMapping(method = RequestMethod.GET,value = "/{idaccion}/{valoracion}")
-    JsonObject consult(@PathVariable String idaccion, @PathVariable String valoracion) throws IOException{
-        //System.out.println("ENTRA "+APIconnection.getAPI(idaccion, valoracion));
-        //APIconnection.getAPI(idaccion, valoracion).isJsonObject();
-        return APIconnection.getAPI(idaccion, valoracion);
+    ResponseEntity<?> consult(@PathVariable String idaccion, @PathVariable String valoracion) throws IOException{
+        return new ResponseEntity<>(APIconnection.getAPI(idaccion, valoracion), HttpStatus.ACCEPTED);
     }
 }
 

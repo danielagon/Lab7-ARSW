@@ -5,9 +5,6 @@
  */
 package edu.eci.arsw;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,7 +21,7 @@ public class HttpConnection {
 
     //private static final String GET_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=fb&apikey=Q1QZFVJQ21K7C6XM";
 
-    public JsonObject getAPI(String identificador, String tipo) throws IOException {
+    public String getAPI(String identificador, String tipo) throws IOException {
 
         String GET_URL = "https://www.alphavantage.co/query?function="+tipo+"&symbol="+identificador+"&apikey=Q1QZFVJQ21K7C6XM";
         URL obj = new URL(GET_URL);
@@ -37,20 +34,16 @@ public class HttpConnection {
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     con.getInputStream()));
             String inputLine;
-            StringBuilder response = new StringBuilder();
+            StringBuffer response = new StringBuffer();
 
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
             in.close();
 
-            JsonParser jsonParser = new JsonParser();
-            JsonObject res = jsonParser.parse(response.toString()).getAsJsonObject();
-            //System.out.println(res.toString());
-            return res;
+            return response.toString();
         } else {
-            String res = "GET request not worked";
-            return null;
+            return "GET request not worked";
         }
     }
 

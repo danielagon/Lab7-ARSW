@@ -7,10 +7,9 @@
 var RestControllerModule = (function (){
     
     var getConsult = function (id, type, callback){
-        alert("ENTRA 2");
         axios.get('/consult/'+id+'/'+type)
             .then(function (consult){
-                callback.onSuccess(consult);
+                callback.onSuccess(consult.data);
             })
             .catch(function (error){
                 callback.onFailed(error);
