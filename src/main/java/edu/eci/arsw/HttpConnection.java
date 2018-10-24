@@ -19,8 +19,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class HttpConnection {
 
-    //private static final String GET_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=fb&apikey=Q1QZFVJQ21K7C6XM";
-
     public String getAPI(String identificador, String tipo) throws IOException {
 
         String GET_URL = "https://www.alphavantage.co/query?function="+tipo+"&symbol="+identificador+"&apikey=Q1QZFVJQ21K7C6XM";
