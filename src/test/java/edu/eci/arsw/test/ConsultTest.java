@@ -7,7 +7,6 @@ package edu.eci.arsw.test;
 
 import edu.eci.arsw.HttpConnection;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static org.junit.Assert.assertEquals;
