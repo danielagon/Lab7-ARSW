@@ -5,7 +5,6 @@
  */
 package edu.eci.arsw;
 
-import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.HttpStatus;
@@ -26,7 +25,7 @@ public class ConsultAPIController {
     private HttpConnection APIconnection;
   
     @RequestMapping(method = RequestMethod.GET,value = "/{idaccion}/{valoracion}")
-    ResponseEntity<?> consult(@PathVariable String idaccion, @PathVariable String valoracion) throws IOException{
+    ResponseEntity<?> consult(@PathVariable String idaccion, @PathVariable String valoracion) throws Exception{
         APIconnection.asignacion(idaccion, valoracion);
         APIconnection.run();
         return new ResponseEntity<>(APIconnection.getAPI(), HttpStatus.ACCEPTED);
