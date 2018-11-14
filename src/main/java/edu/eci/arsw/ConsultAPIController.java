@@ -27,7 +27,7 @@ public class ConsultAPIController {
     @RequestMapping(method = RequestMethod.GET,value = "/{idaccion}/{valoracion}")
     ResponseEntity<?> consult(@PathVariable String idaccion, @PathVariable String valoracion) throws Exception{
         APIconnection.asignacion(idaccion, valoracion);
-        APIconnection.run();
+        APIconnection.consult();
         return new ResponseEntity<>(APIconnection.getAPI(), HttpStatus.ACCEPTED);
     }
 }

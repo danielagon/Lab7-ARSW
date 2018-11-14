@@ -1,11 +1,13 @@
-# Parcial ARSW API
+# Laboratorio Bases de Datos No-SQL
+## Arquitecturas de Software - ARSW
+## Escuela Colombiana de Ingeniería
 
 - Daniela González
+- [Link de heroku](https://arsw-lab7.herokuapp.com/)
 
-## Descripción
+## Descripción arquitectura
 
-Su compañía lo ha seleccionado para construir una aplicación que demuestre una simple arquitectura de Microservicios desplegada en Heroku para uno de los clientes más importantes.
-Así, han decidido que usted debe construir una aplicación para consultar el mercado de valores de las acciones negociadas en Bolsa.  La aplicación recibirá el identificador de una acción, por ejemplo “MSFT” para Microsoft  y deberá mostrar el histórico de la valoración intra-día, diaria, semanal o mensual. Para esto utilice el API gratuito de https://www.alphavantage.co/documentation (Puede crear una cuenta para obtener la llave para realizar consultas). Se le pide que su implementación sea eficiente en cuanto a recursos así que debe implementar un Caché que permita evitar hacer consultas repetidas al API externo. Finalmente se le pide que muestre como se puede enlazar con otro proveedor de servicios, en este caso utilice llamados como los siguientes (https://api.iextrading.com/1.0/stock/aapl/chart) y revisé la documentación en https://iextrading.com/developer/docs/#chart.
+La arquitectura esta compuesta por un cliente pesado en Javascript, un controlador Spring para aceptar multiples peticiones HTTP realizadas desde un cliente WEB, el controlador tiene inyectado un servicio que se encarga de consultar en un API externo (https://www.alphavantage.co/documentation) el mercado de valores de las acciones negociadas en la Bolsa mediante un identificador y el histórico de la valoración (intra-día, diaria, semanal o mensual). El sistema busca primero una respuesta a la consulta en la base de datos y si no tiene respuesta realiza la consulta al API externo.
 
 ## Diseño
-![](img/Diseño.png)
+![](img/arquitectura.png)

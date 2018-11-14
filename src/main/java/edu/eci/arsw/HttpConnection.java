@@ -34,7 +34,12 @@ public class HttpConnection implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception{
         
-        try {
+        System.out.println("Conexión establecida a MongoDB");
+            
+    }
+        
+    public void consult() throws Exception{
+        try{
             if (repository.findByIdentifierAndType(identificador, tipo) == null){
                 String GET_URL = "https://www.alphavantage.co/query?function="+tipo+"&symbol="+identificador+"&apikey=Q1QZFVJQ21K7C6XM";
                 URL obj = new URL(GET_URL);
